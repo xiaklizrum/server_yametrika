@@ -78,7 +78,7 @@ class YaMetrika {
         $pageRef = $this->absoluteUrl($pageRef, $currentUrl);
 
         $modes = array('ut' => $ut);
-        $this->hitExt($pageUrl, $pageTitle, $pageRef, $userParams, $modes);
+        return $this->hitExt($pageUrl, $pageTitle, $pageRef, $userParams, $modes);
     }
 
     // Достижение цели
@@ -95,7 +95,7 @@ class YaMetrika {
             $referer = $_SERVER['HTTP_REFERER'];
         }
 
-        $this->hitExt($target, null, $referer, $userParams, null);
+        return $this->hitExt($target, null, $referer, $userParams, null);
     }
 
     // Внешняя ссылка
@@ -105,8 +105,9 @@ class YaMetrika {
         {
             $modes = array('ln' => true, 'ut' => 'noindex');
             $referer = $this->currentPageUrl();
-            $this->hitExt($url, $title, $referer, null, $modes);
+            return $this->hitExt($url, $title, $referer, null, $modes);
         }
+		return false;
     }
 
     // Загрузка файла
@@ -117,15 +118,16 @@ class YaMetrika {
             $currentUrl = $this->currentPageUrl();
             $modes = array('dl' => true, 'ln' => true);
             $file = $this->absoluteUrl($file, $currentUrl);
-            $this->hitExt($file, $title, $currentUrl, null, $modes);
+            return $this->hitExt($file, $title, $currentUrl, null, $modes);
         }
+		return false;
     }
 
     // Не отказ
     public function notBounce()
     {
         $modes = array('nb' => true);
-        $this->hitExt('', '', '', null, $modes);
+        return $this->hitExt('', '', '', null, $modes);
     }
 
     // Параметры визитов
@@ -134,8 +136,9 @@ class YaMetrika {
         if ($data)
         {
             $modes = array('pa' => true);
-            $this->hitExt('', '', '', $data, $modes);
+            return $this->hitExt('', '', '', $data, $modes);
         }
+		return false;
     }
 
     // Общий метод для отправки хитов
@@ -207,7 +210,7 @@ class YaMetrika {
 
         $getQuery = self::PATH.$this->counterId.'/1?rn='.rand(0, 100000).'&wmode=2';
 
-        $this->postRequest(self::HOST, $getQuery, $this->buildQueryVars($postData));
+        return $this->postRequest(self::HOST, $getQuery, $this->buildQueryVars($postData));
     }
 
     // Текущий URL
