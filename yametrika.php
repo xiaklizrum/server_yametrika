@@ -48,6 +48,9 @@ class YaMetrika {
     private $counterClass;
     private $encoding;
 
+    public $userAgent;
+    public $userIP;
+
     function __construct($counterId, $counterClass = 0, $encoding = 'utf-8')
     {
         $this->counterId = $counterId;
@@ -267,8 +270,8 @@ class YaMetrika {
 
         $out  = "POST $path HTTP/1.1\r\n";
         $out .= "Host: $host\r\n";
-        $out .= "X-Real-IP: ".$_SERVER['REMOTE_ADDR']."\r\n";
-        $out .= "User-Agent: ".$_SERVER['HTTP_USER_AGENT']."\r\n";
+        $out .= "X-Real-IP: ".$this->userIP."\r\n";
+        $out .= "User-Agent: ".$this->userAgent."\r\n";
         $out .= "Content-type: application/x-www-form-urlencoded\r\n";
         $out .= "Content-length: $dataLen\r\n";
         $out .= "Connection: close\r\n\r\n";
