@@ -44,7 +44,7 @@
   ```PHP
 <?php
 //...
-include('yametrika.php');
+use ServerYaMetrika\YaMetrika;
 
 $counter = new YaMetrika(123456); // Номер счётчика Метрики
 $counter->hit('http://example.ru/archive.zip');
@@ -56,7 +56,7 @@ $counter->hit('http://example.ru/archive.zip');
   ```PHP
 <?php
 //...
-include('yametrika.php');
+use ServerYaMetrika\YaMetrika;
 
 $counter = new YaMetrika(123456); // Номер счётчика Метрики
 $counter->hit() // Вызов метода необходим для корректной привязки цели к визиту
@@ -69,7 +69,7 @@ $counter->reachGoal('submit');
   ```PHP
 <?php
 //...
-include('yametrika.php');
+use ServerYaMetrika\YaMetrika;
 
 $counter = new YaMetrika(123456); // Номер счётчика Метрики
 $counter->file('http://example.ru/archive.zip');
@@ -81,7 +81,7 @@ $counter->file('http://example.ru/archive.zip');
   ```PHP
 <?php
 //...
-include('yametrika.php');
+use ServerYaMetrika\YaMetrika;
 
 $counter = new YaMetrika(123456); // Номер счётчика Метрики
 // Просмотр статистики в отчёте "Параметры визитов", ветка RSS -> User Agent
@@ -94,7 +94,7 @@ $counter->params(Array('RSS' => Array('User Agent' => $_SERVER['HTTP_USER_AGENT'
 Добавляем в корневой .htaccess строку "RewriteRule ^robots.txt$ robots.php" и создаём в корне файл robots.php с содержанием:
   ```PHP
 <?php
-require('yametrika.php');
+use ServerYaMetrika\YaMetrika;
 
 $counter = new YaMetrika(123456); // Номер счётчика Метрики
 // Просмотр статистики в отчёте "Параметры визитов", ветка Robots.txt -> User Agent

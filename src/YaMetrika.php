@@ -3,11 +3,12 @@
 /*
     Author: Seleznev Denis, hcodes@yandex.ru
     Description: Серверная отправка хитов с помощью PHP в Яндекс.Метрику
-    Version: 1.0.2
     License: MIT, GNU PL
 
     Примеры использования:
     ======================
+
+    use ServerYaMetrika\YaMetrika;
 
     $counter = new YaMetrika(123456); // номер счётчика Метрики
     $counter->hit(); // Значение URL и referer берутся по умолчанию из $_SERVER
