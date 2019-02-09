@@ -3,12 +3,11 @@
 /*
     Author: Seleznev Denis, hcodes@yandex.ru
     Description: Серверная отправка хитов с помощью PHP в Яндекс.Метрику
+    Version: 1.0.2
     License: MIT, GNU PL
 
     Примеры использования:
     ======================
-
-    use ServerYaMetrika\YaMetrika;
 
     $counter = new YaMetrika(123456); // номер счётчика Метрики
     $counter->hit(); // Значение URL и referer берутся по умолчанию из $_SERVER
@@ -65,7 +64,7 @@ class YaMetrika {
     public function hit($pageUrl = null, $pageTitle = null, $pageRef = null, $userParams = '', $ut = '')
     {
         $currentUrl = $this->currentPageUrl();
-        $referer = $_SERVER['HTTP_REFERER'];
+        $referer = $_SERVER['HTTP_REFERER'] ?? '';
 
         if (is_null($pageUrl))
         {
@@ -95,7 +94,7 @@ class YaMetrika {
         else
         {
             $target = $this->currentPageUrl();
-            $referer = $_SERVER['HTTP_REFERER'];
+            $referer = $_SERVER['HTTP_REFERER'] ? '';
         }
 
         return $this->hitExt($target, null, $referer, $userParams, null);
@@ -221,7 +220,7 @@ class YaMetrika {
     {
         $protocol = 'http://';
 
-        if ($_SERVER['HTTPS'])
+        if (isset($_SERVER['HTTPS']))
         {
             $protocol = 'https://';
         }
@@ -261,7 +260,7 @@ class YaMetrika {
     private function buildQueryVars($queryVars)
     {
         $queryBits = array();
-        while (list($var, $value) = each($queryVars))
+        foreach ($queryVars as $var=>$value)
         {
             $queryBits[] = $var.'='.$value;
         }
