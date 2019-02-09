@@ -94,7 +94,7 @@ class YaMetrika {
         else
         {
             $target = $this->currentPageUrl();
-            $referer = $_SERVER['HTTP_REFERER'] ? '';
+            $referer = $_SERVER['HTTP_REFERER'] ?? '';
         }
 
         return $this->hitExt($target, null, $referer, $userParams, null);
