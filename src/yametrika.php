@@ -39,6 +39,8 @@
     $counter->notBounce();
 */
 
+namespace ServerYaMetrika;
+
 class YaMetrika {
     const HOST = 'mc.yandex.ru';
     const PATH = '/watch/';

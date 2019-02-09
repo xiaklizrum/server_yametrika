@@ -1,0 +1,29 @@
+{
+    "name": "thesoultaker48/server_yametrika",
+    "description": "Server-side tracking of visitors using Yandex.Metrika",
+    "license": "MIT License",
+    "keywords": ["yandex-metrika"],
+    "homepage": "https://github.com/thesoultaker48/server_yametrika",
+    "authors": [
+        {
+            "name": "Denis Seleznev",
+            "email": "hcodes@yandex.ru"
+        },
+        {
+            "name": "Sergey Avdeev",
+            "email": "thesoultaker48@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "ServerYaMetrika\\": "src"
+        }
+    }
+}
+
