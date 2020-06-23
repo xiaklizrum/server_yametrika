@@ -1,5 +1,5 @@
 # Серверное отслеживание посетителей с помощью Яндекс.Метрики для PHP
 
-Отличия об [базового репоизтория](https://github.com/thesoultaker48/server_yametrika):
+Отличия об [базового репозитория](https://github.com/thesoultaker48/server_yametrika):
 ------------
 - Совместимость с php 5.6
